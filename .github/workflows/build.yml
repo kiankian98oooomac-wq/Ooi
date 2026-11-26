@@ -14,7 +14,7 @@ jobs:
 
       - name: Unzip project (apk.zip)
         run: |
-          test -f apk.zip || { echo "apk.zip پیدا نشد؛ آن را در ریشهٔ ریپو آپلود کن"; exit 1; }
+          test -f apk.zip || { echo "apk.zip not found"; exit 1; }
           rm -rf android-app
           unzip -q apk.zip -d android-app
           ls -la android-app
@@ -24,9 +24,6 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
